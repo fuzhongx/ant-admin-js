@@ -1,0 +1,23 @@
+i[class^=icon]{
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position:0 0;
+    background-size: 100% 100%;
+}
+//表示mb-4表示margi-bottom 正4
+.mb--4{
+    margin-bottom: -4px;
+}
+.aside-icon-size-20{
+    width: 20px;
+    height: 20px;
+}
+.aside-icon-home{
+    background-image: url('~@/assets/image/aside-home.png');
+}
+.aside-icon-user{
+    background-image: url('~@/assets/image/aside-user.png');
+}
+.aside-icon-menu{
+    background-image: url('~@/assets/image/aside-menu.png');
+}
