@@ -1,11 +1,11 @@
 <template>
     <a-layout id="layout_main">
-    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible class="side_width">
+    <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible width="220px">
         <Aside />
     </a-layout-sider>
     <a-layout>
       <a-layout-header style="background: #fff; padding: 0">
-        <Header />
+        <Header  @collapsed="handerButton" />
       </a-layout-header>
       <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
       <Main />
@@ -24,23 +24,21 @@ export default {
     components: { Aside, Header, Main },
     setup(){
         const data=reactive({
-            collapsed: false,
+            collapsed: JSON.parse(localStorage.getItem('collapsed')),
         })
+        const handerButton=(value)=>{
+            data.collapsed=value
+            localStorage.setItem('collapsed',value)
+        }
         return {
-            ...toRefs(data)
+            ...toRefs(data),
+            handerButton
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-.side_width{
-    flex: 0 0 220px !important;
-    max-width: 220px  !important;
-    min-width: 220px  !important;
-    width: 220px  !important;
-    font-size: 14px;
-}
 
 #layout_main{
     height: 100vh;

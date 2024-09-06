@@ -1,11 +1,10 @@
 <template>
     <svg :class="svgClass" aria-hidden="true" @click="svgClick">
-        <use :xlink:href="iconName"></use>
+        <use :xlink:href="iconNames"></use>
     </svg>
 </template>
 
 <script>
-import { reactive,computed } from 'vue'
 export default {
     props: {
     iconName: {
@@ -17,7 +16,7 @@ export default {
     svgClass() {
       return `icon icon-${this.iconName}`;
     },
-    iconName() {
+    iconNames() {
       return `#icon-${this.iconName}`;
     }
   }

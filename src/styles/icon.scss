@@ -8,16 +8,21 @@ i[class^=icon]{
 .mb--4{
     margin-bottom: -4px;
 }
+.mr-5{
+    margin-right:2px;
+    font-size: 14px;
+}
 .aside-icon-size-20{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 17px;
 }
-.aside-icon-home{
-    background-image: url('~@/assets/image/aside-home.png');
-}
-.aside-icon-user{
-    background-image: url('~@/assets/image/aside-user.png');
-}
-.aside-icon-menu{
-    background-image: url('~@/assets/image/aside-menu.png');
-}
+
+// .aside-icon-home{
+//     background-image: url('~@/assets/image/aside-home.png');
+// }
+// .aside-icon-user{
+//     background-image: url('~@/assets/image/aside-user.png');
+// }
+// .aside-icon-menu{
+//     background-image: url('~@/assets/image/aside-menu.png');
+// }
