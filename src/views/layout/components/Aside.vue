@@ -9,7 +9,8 @@
             <template v-if="!items.hidden">
                 <a-menu-item :key="items.path" v-if="!items.children">
                     <router-link :to="items.path">
-                       <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon" class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
+                        <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon"
+                                class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
                         <span>
                             <!-- <i class="icon aside-icon-size-20 mb--4" :class="items.meta && items.meta.icon"></i> -->
                             {{ items.meta && items.meta.title }}
@@ -19,24 +20,43 @@
                 <!--子级-->
                 <a-sub-menu v-else>
                     <template #title>
-                        <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon" class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
+                        <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon"
+                                class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
                         <span>
-                            <!-- <i class="icon aside-icon-size-20 mb--4" :class="items.meta && items.meta.icon"></i> -->
                             {{ items.meta && items.meta.title }}
                         </span>
                     </template>
 
                     <template v-if="items.children.length">
                         <a-menu-item v-for="child in items.children" :key="child.path">
-                            <router-link :to="child.path"> 
-                                <svg-icon :icon-name="child.meta && child.meta.icon" class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon>
+                            <router-link :to="child.path">
+                                <svg-icon :icon-name="child.meta && child.meta.icon"
+                                    class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon>
                                 <span>
                                     {{ child.meta && child.meta.title }}
                                 </span>
                             </router-link>
-                        </a-menu-item> 
+                        </a-menu-item>
+                         <!-- 三级菜单 -->
+                     <a-sub-menu v-for="child in items.children" :key="child.path">
+                     <template #title>
+                        <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon"
+                                class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
+                        <span>  
+                           {{ child.meta && child.meta.title }}
+                        </span>
                     </template>
-
+                            <a-menu-item v-for="childs in child.children" :key="childs.path">
+                            <router-link :to="childs.path">
+                                <svg-icon :icon-name="child.meta && child.meta.icon"
+                                    class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon>
+                                <span>
+                                    {{ childs.meta && childs.meta.title }}
+                                </span>
+                            </router-link>
+                        </a-menu-item>
+                        </a-sub-menu>
+                    </template>
                 </a-sub-menu>
             </template>
         </template>
@@ -54,8 +74,8 @@ export default {
 
         const data = reactive({
             collapsed: false,
-            // selectedKeys: localStorage.getItem('selectedKeys') ? [localStorage.getItem('selectedKeys')] : [],//默认被选中哪一个
-            // openKeys: localStorage.getItem('openKeys') ? [localStorage.getItem('openKeys')] : [],//展开菜单
+            selectedKeys: localStorage.getItem('selectedKeys') ? [localStorage.getItem('selectedKeys')] : [],//默认被选中哪一个
+            openKeys: localStorage.getItem('openKeys') ? [localStorage.getItem('openKeys')] : [],//展开菜单
             src: 'https://foruda.gitee.com/images/1699583663424602079/6ae13aa7_1151004.png'
         })
         // 选择菜单
@@ -79,17 +99,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.pl-0{
+.pl-0 {
     padding-left: 0px;
 }
-.ruoyi{
+
+.ruoyi {
     background-image: url('~@/assets/image/ruoyi.png');
 }
+
 .logo {
     display: flex;
     height: 40px;
     align-items: center;
     justify-content: center;
+
     img {
         height: 40px;
     }

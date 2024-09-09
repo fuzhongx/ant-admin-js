@@ -67,24 +67,16 @@ const routes = [
         component: () => import("../views/admin/Role.vue"),
         children:[
           {
-            path: "/role",
-            name: "Role",
-            meta: {
-              title: "角色管理",
-              icon: "role",
-            },
-            component: () => import("../views/admin/Role.vue")},
-          {
-            path: "/test",
-            name: "Test",
+            path: "/text",
+            name: "Text",
             meta: {
               title: "测试",
-              icon: "user",
+              icon: "role",
             },
-            component: () => import("../views/admin/Test.vue"),
-          },
-        ]
-      },
+            component: () => import("../views/admin/Text/Text.vue"),
+      }
+    ]
+  },
       {
         path: "/user",
         name: "User",
@@ -106,7 +98,27 @@ const routes = [
       icon: "imformation",
     },
     component: () => import("../views/layout/Index.vue"),
-    children: [],
+    children: [
+      {
+        path: "/role",
+        name: "Role",
+        meta: {
+          title: "角色管理",
+          icon: "role",
+        },
+        component: () => import("../views/admin/Role.vue"),
+      },
+      {
+        path: "/user",
+        name: "User",
+        meta: {
+          title: "用户管理",
+          icon: "user",
+        },
+        component: () => import("../views/admin/User.vue"),
+        children: [],
+      },
+    ],
   },
   //产品管理
   {
@@ -117,7 +129,27 @@ const routes = [
       icon: "product",
     },
     component: () => import("../views/layout/Index.vue"),
-    children: [],
+    children: [
+      {
+        path: "/role",
+        name: "Role",
+        meta: {
+          title: "角色管理",
+          icon: "role",
+        },
+        component: () => import("../views/admin/Role.vue"),
+      },
+      {
+        path: "/user",
+        name: "User",
+        meta: {
+          title: "用户管理",
+          icon: "user",
+        },
+        component: () => import("../views/admin/User.vue"),
+        children: [],
+      },
+    ],
   },
   //会员管理
   {
