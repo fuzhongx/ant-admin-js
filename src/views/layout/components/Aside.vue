@@ -7,13 +7,13 @@
         </a-menu-item>
         <template v-for="items in routers" :key="items.path">
             <template v-if="!items.hidden">
-                <a-menu-item :key="items.path" v-if="!items.children">
-                    <router-link :to="items.path">
+                <a-menu-item :key="items.path" v-if="hasOnlychildren(items)">
+                    <router-link :to="items.children[0].path">
                         <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon"
                                 class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
                         <span>
                             <!-- <i class="icon aside-icon-size-20 mb--4" :class="items.meta && items.meta.icon"></i> -->
-                            {{ items.meta && items.meta.title }}
+                            {{ items.children[0].meta && items.children[0].meta.title }}
                         </span>
                     </router-link>
                 </a-menu-item>
@@ -37,25 +37,7 @@
                                 </span>
                             </router-link>
                         </a-menu-item>
-                         <!-- 三级菜单 -->
-                     <a-sub-menu v-for="child in items.children" :key="child.path">
-                     <template #title>
-                        <span class="anticon"> <svg-icon :icon-name="items.meta && items.meta.icon"
-                                class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon></span>
-                        <span>  
-                           {{ child.meta && child.meta.title }}
-                        </span>
-                    </template>
-                            <a-menu-item v-for="childs in child.children" :key="childs.path">
-                            <router-link :to="childs.path">
-                                <svg-icon :icon-name="child.meta && child.meta.icon"
-                                    class="icon mr-5 aside-icon-size-20 mb--4"></svg-icon>
-                                <span>
-                                    {{ childs.meta && childs.meta.title }}
-                                </span>
-                            </router-link>
-                        </a-menu-item>
-                        </a-sub-menu>
+                
                     </template>
                 </a-sub-menu>
             </template>
@@ -88,10 +70,20 @@ export default {
             data.openKeys = openKeys
             localStorage.setItem('openKeys', openKeys)
         }
+        //检测是否自有一个子路由
+        const hasOnlychildren=(data)=>{
+         if(!data.children){return false}
+         const routers=data.children.filter(item=>item.children ? false : true)
+         if(routers.length==1){
+            return true
+         }else{
+            return false
+         }
+        }
         return {
             data,
             routers,
-            selectMenu, openMenu
+            selectMenu, openMenu,hasOnlychildren
         }
     }
 

@@ -27,16 +27,6 @@ const routes = [
     },
     component: () => import("../views/acount/Register.vue"),
   },
-  {
-    path: "/home",
-    name: "Home",
-    hidden: true,
-    meta: {
-      title: "主页",
-      icon: "home",
-    },
-    component: () => import("../views/home/Index.vue"),
-  },
   // 首页
   {
     path: "/",
@@ -46,6 +36,16 @@ const routes = [
       icon: "home",
     },
     component: () => import("../views/layout/Index.vue"),
+     children:[
+      {
+      path: "/home",
+      name: "Home",
+      meta: {
+        title: "首页",
+        icon: "home",
+      },
+      component: () => import("../views/home/Index.vue")},
+  ]
   },
   //  管理后台
   {
@@ -65,17 +65,6 @@ const routes = [
           icon: "role",
         },
         component: () => import("../views/admin/Role.vue"),
-        children:[
-          {
-            path: "/text",
-            name: "Text",
-            meta: {
-              title: "测试",
-              icon: "role",
-            },
-            component: () => import("../views/admin/Text/Text.vue"),
-      }
-    ]
   },
       {
         path: "/user",
@@ -85,7 +74,6 @@ const routes = [
           icon: "user",
         },
         component: () => import("../views/admin/User.vue"),
-        children: [],
       },
     ],
   },
@@ -116,7 +104,6 @@ const routes = [
           icon: "user",
         },
         component: () => import("../views/admin/User.vue"),
-        children: [],
       },
     ],
   },
@@ -147,7 +134,6 @@ const routes = [
           icon: "user",
         },
         component: () => import("../views/admin/User.vue"),
-        children: [],
       },
     ],
   },
