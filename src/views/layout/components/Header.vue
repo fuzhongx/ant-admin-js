@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import bus from '../../../unilt/Bus.js'
 import { useI18n } from 'vue-i18n'
 import { DownOutlined } from '@ant-design/icons-vue';
 import { reactive, getCurrentInstance } from 'vue';
@@ -52,6 +53,7 @@ export default {
         const handerCollapsed = () => {
             data.collapsed=!data.collapsed
             emit('collapsed',data.collapsed)
+            bus.emit('evenBus',data.collapsed)
         }
         const { locale } = useI18n({ useScope: 'global' })
         //扩展语言

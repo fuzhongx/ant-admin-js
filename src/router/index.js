@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
-    path: "/login",
+    path: "/",
     name: "Login",
     hidden: true,
     meta: {
@@ -29,7 +29,7 @@ const routes = [
   },
   // 首页
   {
-    path: "/",
+    path: "/index",
     name: "Index",
     meta: {
       title: "首页",
@@ -117,24 +117,6 @@ const routes = [
     },
     component: () => import("../views/layout/Index.vue"),
     children: [
-      {
-        path: "/role",
-        name: "Role",
-        meta: {
-          title: "角色管理",
-          icon: "role",
-        },
-        component: () => import("../views/admin/Role.vue"),
-      },
-      {
-        path: "/user",
-        name: "User",
-        meta: {
-          title: "用户管理",
-          icon: "user",
-        },
-        component: () => import("../views/admin/User.vue"),
-      },
     ],
   },
   //会员管理
