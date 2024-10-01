@@ -16,6 +16,8 @@
     "vue": "^3.2.13",
     "vue-i18n": "^10.0.0-beta.5",
     "vue-router": "^4.0.3",
+    "vue-simple-verify": "^1.1.0",
+    "vue3-captcha": "^0.3.4",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

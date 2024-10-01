@@ -71,7 +71,7 @@ export default {
        
 //   // 当组件卸载时，取消事件订阅以避免内存泄漏
        onUnmounted(()=>{
-        off()
+       
        })
          
         
@@ -101,7 +101,7 @@ export default {
         return {
             data,
             routers,
-            selectMenu, openMenu,hasOnlychildren,onMounted,collapsed,off
+            selectMenu, openMenu,hasOnlychildren,onMounted,collapsed
         }
     }
 
